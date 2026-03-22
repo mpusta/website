@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home - Martin Pustavrh</title>
+  <meta name="description" content="Martin Pustavrh">
+  <link rel="canonical" href="https://martinpustavrh.com/">
+  <link rel="icon" href="./img/signature.png" type="image/png">
+  <meta property="og:title" content="Home - Martin Pustavrh">
+  <meta property="og:description" content="Eliot Peper is the author of twelve novels.">
+  <meta property="og:url" content="https://martinpustavrh.com/">
+  <meta property="og:site_name" content="Martin Pustavrh">
+
+  <style>
+    /* ── Fonts ── */
+    @font-face {
+      font-family: "Cantilever, by Peter Nowell";
+      font-display: auto;
+      font-weight: 300;
+      src: url('./fonts/pncantilever12alight-light-webfont.woff2') format('woff2'),
+           url('./fonts/pncantilever12alight-light-webfont.woff') format('woff');
+    }
+    @font-face {
+      font-family: "Cantilever, by Peter Nowell";
+      font-display: auto;
+      font-weight: 400;
+      src: url('./fonts/pncantilever12b-regular-webfont.woff2') format('woff2'),
+           url('./fonts/pncantilever12b-regular-webfont.woff') format('woff');
+    }
+    @font-face {
+      font-family: "Cantilever, by Peter Nowell";
+      font-display: auto;
+      font-weight: 600;
+      src: url('./fonts/pncantilever12b-medium-webfont.woff2') format('woff2'),
+           url('./fonts/pncantilever12b-medium-webfont.woff') format('woff');
+    }
+
+    /* ── Custom Properties ── */
+    :root {
+      --color-foreground: #2E2B26;
+      --color-secondary: #A19D95;
+      --color-background: #F7F7F7;
+      --color-primary: #fac02d;
+      --color-tertiary: #F0F0F0;
+      --color-border-highlight: white;
+      --font-label: "Cantilever, by Peter Nowell", "Avenir Next", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-text: "Cantilever, by Peter Nowell", "Avenir Next", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-normal: 1.1875rem;
+      --link-inactive-underline: rgba(161, 157, 149, 0.3);
+      --link-active-underline: rgba(250, 192, 45, 0.7);
+      --content-width: 620px;
+    }
+
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-label);
+      font-size: var(--font-size-normal);
+      line-height: 1.6;
+      color: var(--color-foreground);
+      background-color: var(--color-border-highlight);
+      padding: 8px;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+      font-feature-settings: "liga" 1, "ss16" 1, "calt" 1;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    p, li, td {
+      font-family: var(--font-text);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: inherit;
+      line-height: 1.125;
+    }
+    h1 { font-weight: 300; }
+    h2 { font-weight: 400; }
+
+    a {
+      position: relative;
+      color: currentcolor;
+      text-decoration: none;
+      width: fit-content;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── Layout Shell ── */
+    .site-wrapper {
+      min-height: calc(100vh - 16px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-header,
+    main,
+    .site-footer {
+      background-color: var(--color-background);
+    }
+
+    .site-header { margin-bottom: 8px; }
+    main { margin-bottom: 8px; flex-grow: 1; }
+
+    /* ── Header ── */
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px min(30px, 5vw);
+    }
+
+    .logo-custom {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.3em;
+      font-size: 30px;
+      outline: none;
+      white-space: nowrap;
+      font-family: var(--font-label);
+    }
+    .logo-name {
+      font-weight: 400;
+      color: var(--color-foreground);
+    }
+    .logo-bar {
+      color: var(--color-primary);
+      font-weight: 300;
+    }
+    .logo-role {
+      font-weight: 400;
+      color: var(--color-secondary);
+    }
+
+    /* ── Nav ── */
+    .site-nav {
+      display: flex;
+      list-style: none;
+      gap: 1.5em;
+    }
+    .site-nav a {
+      opacity: 0.6;
+      font-size: 19px;
+      font-weight: 400;
+      transition: opacity 0.4s;
+    }
+    .site-nav a:hover,
+    .site-nav a:active,
+    .site-nav a.current {
+      opacity: 1;
+      transition: opacity 0.2s;
+    }
+    .site-nav a.current { font-weight: 600; }
+
+    /* Mobile nav toggle */
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; color: currentColor; padding: 4px; }
+    .nav-toggle svg { display: block; width: 24px; height: 24px; fill: currentColor; }
+
+    @media (max-width: 599px) {
+      .site-nav { display: none; }
+      .nav-toggle { display: block; }
+      .site-nav.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        background: var(--color-background);
+        padding: 80px 30px 30px;
+        gap: 1em;
+      }
+      .site-nav.open a { font-size: 24px; opacity: 0.8; }
+    }
+    @media (min-width: 600px) and (max-width: 980px) {
+      .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .site-nav { margin-bottom: 0.8em; }
+    }
+
+    /* ── Main Content ── */
+    .content {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 100px min(30px, 5vw) 80px;
+    }
+    .content > * + * {
+      margin-top: 30px;
+    }
+
+    .headshot {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+    }
+
+    /* ── Text Links (underline effect) ── */
+    p a {
+      transition: box-shadow 0.4s ease;
+      box-shadow: 0 -0.1em 0 var(--color-background) inset, 0 -0.4em 0 var(--link-inactive-underline) inset;
+    }
+    p a:hover {
+      transition: box-shadow 0.2s ease;
+      box-shadow: 0 -0.1em 0 var(--color-background) inset, 0 -0.4em 0 var(--link-active-underline) inset;
+    }
+
+    /* ── Announcement Block ── */
+    .announcement {
+      position: relative;
+      z-index: 0;
+    }
+    .announcement-link {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 15px;
+      border-radius: 12px;
+      color: inherit;
+      box-shadow: none;
+      outline: none;
+    }
+    .announcement-link::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: 12px;
+      background-color: var(--announcement-color, #2158e4);
+      opacity: 0.15;
+      transition: opacity 0.8s;
+    }
+    .announcement-link:hover::before {
+      opacity: 0.22;
+      transition: opacity 0.25s;
+    }
+    .announcement-link:hover { box-shadow: none; }
+
+    .announcement-cover {
+      position: relative;
+      height: 27vmin;
+      min-height: 120px;
+      max-height: 200px;
+      aspect-ratio: 200 / 300;
+      flex-shrink: 0;
+    }
+    .announcement-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    /* Book cover gloss overlay */
+    .announcement-cover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 6px;
+      background-image:
+        linear-gradient(180deg, rgba(255,255,255,0.24) 0%, rgba(255,255,255,0.13) 1%, transparent 2%),
+        linear-gradient(145deg, rgba(255,255,255,0.15) 0%, transparent 77%),
+        linear-gradient(90deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.11) 2%, rgba(255,255,255,0.02) 6%, transparent 8%);
+      box-shadow:
+        3px 4px 10px -4px rgba(0,0,0,0.25),
+        0 24px 72px 0 rgba(0,0,0,0.2),
+        0 6px 18px 0 rgba(0,0,0,0.2),
+        inset 0 2px 4px 0 rgba(255,255,255,0.3),
+        inset 2px -2px 6px 0 rgba(0,0,0,0.34);
+      pointer-events: none;
+    }
+
+    .announcement-text {
+      font-family: var(--font-label);
+      font-size: inherit;
+    }
+
+    /* ── Substack Embed ── */
+    .substack-embed {
+      background: #fff;
+      padding: 16px 8px 10px;
+      box-shadow: 0 1px 5px 0 rgba(0,0,0,0.05), 0 6px 40px 0 rgba(0,0,0,0.05);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .substack-embed iframe {
+      width: 100%;
+      display: block;
+      border: 0;
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      padding: 20px;
+      text-align: center;
+      font-family: var(--font-label);
+      color: var(--color-secondary);
+    }
+    .site-footer p {
+      font-family: inherit;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-wrapper">
+
+    <!-- Header -->
+    <header class="site-header">
+      <a href="/" class="logo-custom" aria-label="Martin Pustavrh, Writer">
+        <span class="logo-name">Martin Pustavrh</span>
+        <span class="logo-bar">|</span>
+        <span class="logo-role">Writer</span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav>
+        <ul class="site-nav" id="site-nav">
+          <li><a href="https://martinpustavrh.substack.com" target="_blank">Newsletter</a></li>
+          <li><a href="https://martinpustavrh.substack.com/about">About</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile nav toggle -->
+      <button class="nav-toggle" aria-label="Open menu" onclick="document.getElementById('site-nav').classList.toggle('open')">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7.5h16v1.5H4z"/><path d="M4 15h16v1.5H4z"/></svg>
+      </button>
+    </header>
+
+    <!-- Main -->
+    <main>
+      <div class="content">
+
+        <p>Hi, I'm <a href="/about">Martin Pustavrh</a>.</p>
+
+        <p>The best way to follow my writing is to subscribe to my <a href="https://matinpustavrh.substack.com">newsletter</a>:</p>
+
+        <div class="substack-embed">
+          <iframe src="https://martinpustavrh.substack.com/embed" frameborder="0" scrolling="no" loading="lazy"></iframe>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>&copy; 2025 Martin&nbsp;Pustavrh. All&nbsp;Rights&nbsp;Reserved.</p>
+    </footer>
+
+  </div>
+</body>
+</html>
