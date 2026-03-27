@@ -75,10 +75,13 @@
 
     h1, h2, h3, h4, h5, h6 {
       font-family: inherit;
-      line-height: 1.125;
     }
-    h1 { font-weight: 300; }
-    h2 { font-weight: 400; }
+    h2 {
+      font-size: 18px;
+      color: var(--color-secondary);
+      text-transform: uppercase;
+      font-weight: 400;
+    }
 
     a {
       position: relative;
@@ -202,6 +205,35 @@
       border-radius: 50%;
     }
 
+
+/* ── Interest Blocks ── */
+.interests {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.interest-block {
+  padding: 22px;
+  border-radius: 10px;
+  background-color: color-mix(in srgb, var(--block-color) 12%, transparent);
+  transition: background-color 0.3s;
+}
+.interest-block:hover {
+  background-color: color-mix(in srgb, var(--block-color) 20%, transparent);
+}
+
+.interest-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+.interest-text {
+  font-size: 16px;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
     /* ── Text Links (underline effect) ── */
     p a {
       transition: box-shadow 0.4s ease;
@@ -210,75 +242,6 @@
     p a:hover {
       transition: box-shadow 0.2s ease;
       box-shadow: 0 -0.1em 0 var(--color-background) inset, 0 -0.4em 0 var(--link-active-underline) inset;
-    }
-
-    /* ── Announcement Block ── */
-    .announcement {
-      position: relative;
-      z-index: 0;
-    }
-    .announcement-link {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 15px;
-      border-radius: 12px;
-      color: inherit;
-      box-shadow: none;
-      outline: none;
-    }
-    .announcement-link::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      border-radius: 12px;
-      background-color: var(--announcement-color, #2158e4);
-      opacity: 0.15;
-      transition: opacity 0.8s;
-    }
-    .announcement-link:hover::before {
-      opacity: 0.22;
-      transition: opacity 0.25s;
-    }
-    .announcement-link:hover { box-shadow: none; }
-
-    .announcement-cover {
-      position: relative;
-      height: 27vmin;
-      min-height: 120px;
-      max-height: 200px;
-      aspect-ratio: 200 / 300;
-      flex-shrink: 0;
-    }
-    .announcement-cover img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-    /* Book cover gloss overlay */
-    .announcement-cover::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 6px;
-      background-image:
-        linear-gradient(180deg, rgba(255,255,255,0.24) 0%, rgba(255,255,255,0.13) 1%, transparent 2%),
-        linear-gradient(145deg, rgba(255,255,255,0.15) 0%, transparent 77%),
-        linear-gradient(90deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.11) 2%, rgba(255,255,255,0.02) 6%, transparent 8%);
-      box-shadow:
-        3px 4px 10px -4px rgba(0,0,0,0.25),
-        0 24px 72px 0 rgba(0,0,0,0.2),
-        0 6px 18px 0 rgba(0,0,0,0.2),
-        inset 0 2px 4px 0 rgba(255,255,255,0.3),
-        inset 2px -2px 6px 0 rgba(0,0,0,0.34);
-      pointer-events: none;
-    }
-
-    .announcement-text {
-      font-family: var(--font-label);
-      font-size: inherit;
     }
 
     /* ── Substack Embed ── */
@@ -339,6 +302,32 @@
       <div class="content">
 
         <p>Hi, I'm <a href="https://martinpustavrh.substack.com/about">Martin Pustavrh</a>.</p>
+
+        <p>This is a collection of notes from a wandering mind. I write code to model financial markets, write fiction to make sense of everything else, and spend a lot of time thinking about what happens when AI reshapes how economies work. These interests don't always overlap, but when they do, that's usually where the interesting stuff lives.</p>
+
+        <p>Nothing here has to be practical or useful. It's a space to reflect, to follow whatever thread catches my attention, and to figure things out in the open.</p>
+
+        <h2>What I'm exploring</h2>
+
+        <div class="interests">
+          <div class="interest-block" style="--block-color: #c4956a;">
+            <div class="interest-title">Quantitative Investment Research</div>
+            <div class="interest-text">Building models, writing algorithms, and trying to find signal in noisy markets. I think in Python and think about risk, pricing, and the places where math meets real money.</div>
+          </div>
+
+          <div class="interest-block" style="--block-color: #fac02d;">
+            <div class="interest-title">The Economy of AI</div>
+            <div class="interest-text">How do large language models change forecasting? What happens to labor markets, decision-making, and economic intuition when machines get good at pattern recognition? I dig into the research and try to write about it clearly.</div>
+          </div>
+
+          <div class="interest-block" style="--block-color: #8a7a5a;">
+            <div class="interest-title">Creative Writing</div>
+            <div class="interest-text">Stories, essays, and whatever falls in between. Writing is how I process the world when spreadsheets and papers aren't enough.</div>
+          </div>
+        </div>
+
+
+        <h2>Stay in the loop</h2>
 
         <p>The best way to follow my writing is to subscribe to my <a href="https://martinpustavrh.substack.com">newsletter</a>:</p>
 
